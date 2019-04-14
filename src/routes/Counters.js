@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'dva';
 import Counter from '../components/Counter';
+import {counterAdd,counterAsyncAdd} from '../actions';
 
-function Counters({counter,dispatch}) {
+function Counters({counter,dispatch,counterAdd,counterAsyncAdd}) {
   return (
     <div>
-       <Counter counter={counter} dispatch={dispatch}></Counter>  
+       <Counter
+       counterAdd = {counterAdd}
+       counterAsyncAdd = {counterAsyncAdd}
+       counter={counter}
+       dispatch={dispatch}></Counter>  
     </div>
   );
 }
@@ -18,4 +23,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Counters);
+export default connect(mapStateToProps,{counterAdd,counterAsyncAdd})(Counters);
