@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import Counter from '../components/Counter';
 
-function Counters({counter}) {
+function Counters({counter,dispatch}) {
   return (
     <div>
-       <Counter counter={counter}></Counter>  
+       <Counter counter={counter} dispatch={dispatch}></Counter>  
     </div>
   );
 }
