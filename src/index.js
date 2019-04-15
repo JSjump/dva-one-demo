@@ -21,11 +21,36 @@ const logger = store => next => action => {
       console.log('error ' + e);
     }
   };
+
+ // 添加额外 reducers
+  const extraReducers = {
+    form(state = false, action) {
+      switch (action.type) {
+        case 'SHOW':
+          return true;
+        case 'HIDE':
+          return false;
+        default:
+          return state
+      }
+    }
+  }
+  
+  // 封装effect执行
+  const onEffect = (effect, { put }, model, key) => {
+    return function*(...args) {
+      yield put({ type: 'SHOW' });
+      yield effect(...args);
+      yield put({ type: 'HIDE' });
+    };
+  }
 // 1. Initialize
 const app = dva({
     history : createHistory(),
     // onAction: [logger,error]      // onAction 用于注册中间件
-    onAction :[createLogger]
+    onAction :[createLogger],
+    onEffect,
+    extraReducers,
 });
 
 // 2. Plugins
