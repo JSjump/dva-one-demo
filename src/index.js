@@ -2,10 +2,30 @@ import dva from 'dva';
 import './index.css';
 import { createBrowserHistory  as createHistory} from 'history';
 import createLoading from 'dva-loading';
+import createLogger from 'redux-logger';
 
+
+// 自定义中间件 //中间件的原理
+const logger = store => next => action => {
+    console.log('dispatching', action);
+    let result = next(action);
+    console.log('next state', store.getState());
+    return result;
+  };
+  
+  const error = store => next => action => {
+    try {
+      console.log('error');
+      next(action)
+    } catch(e) {
+      console.log('error ' + e);
+    }
+  };
 // 1. Initialize
 const app = dva({
-    history : createHistory()
+    history : createHistory(),
+    // onAction: [logger,error]      // onAction 用于注册中间件
+    onAction :[createLogger]
 });
 
 // 2. Plugins
