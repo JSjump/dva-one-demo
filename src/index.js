@@ -12,7 +12,9 @@ const app = dva({
 // app.use({});
 
 // 3. Model
-app.model(require('./models/counter').default);
+// app.model(require('./models/counter').default); // 初始化一个model
+// require('./models').default.forEach(key => app.model(key.default)); // 初始化多个model
+require('./models').default.forEach(key => app.model(key.default))
 
 // 4. Router
 app.router(require('./router').default);
