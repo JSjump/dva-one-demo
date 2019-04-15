@@ -10,7 +10,15 @@ export default {
   
     subscriptions: {
       setup({ dispatch, history }) {  // eslint-disable-line
+        window.onresize = () => {
+          dispatch({type:'add'})
+        }
       },
+      aaa({dispatch, history}) {
+          document.addEventListener('click',() => {
+            dispatch({type:'asyncAdd'})
+          })
+      }
     },
   
     effects: {

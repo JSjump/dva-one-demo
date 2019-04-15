@@ -7,7 +7,9 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "dva": "^2.4.1",
+    "dva-loading": "^3.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

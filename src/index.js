@@ -1,7 +1,7 @@
 import dva from 'dva';
 import './index.css';
 import { createBrowserHistory  as createHistory} from 'history';
-
+import createLoading from 'dva-loading';
 
 // 1. Initialize
 const app = dva({
@@ -10,6 +10,7 @@ const app = dva({
 
 // 2. Plugins
 // app.use({});
+app.use(createLoading());
 
 // 3. Model
 // app.model(require('./models/counter').default); // 初始化一个model
