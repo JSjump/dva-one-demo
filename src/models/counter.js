@@ -27,7 +27,7 @@ export default {
   
     reducers: {
       'add'(state, action) {
-        return { counter:state.counter +1 };
+        return { count:state.count +1 };
       },
     },
   
