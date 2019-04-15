@@ -3,7 +3,7 @@ export default {
     namespace: 'counter',
   
     state: {
-        counter: 1,
+        count: 1,
     },
   
     subscriptions: {
